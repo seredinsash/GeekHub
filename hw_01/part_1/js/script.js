@@ -1,50 +1,59 @@
 //NUMBERS
 
-alert(Math.PI.toFixed(2)); //"3.14"
+Math.PI.toFixed(2); //"3.14"
 
-var num = 0.6 + 0.7;
-if (num == 1.3) {
-  alert('Вираз "0,6 + 0,7" дорівнює значенню 1,3');
-} else {
-  alert('Вираз "0,6 + 0,7" не дорівнює значенню 1,3');
-}
+let numRound = 0.6 + 0.7;
+numRound === 1.3; // false
 
-var num = 0.6 + 0.7;
-alert(num.toFixed(1));
++numRound.toFixed(1);
 
-alert(parseInt("100$"));
+parseInt("100$");
 
 //STRINGS
 
-var str = "some test string";
-alert('"' + str[0] + '"' + " and " + '"' + str[str.length - 1] + '"');
+let str = "some test string";
+str =
+  str[0].toUpperCase() +
+  str.slice(1, str.length - 1) +
+  str[str.length - 1].toUpperCase(); // Some test strinG
 
-var str = "some test string";
-alert(
+// OR
+
+str =
   str.slice(0, 1).toUpperCase() +
-    str.slice(1, str.length - 1) +
-    str.slice(str.length - 1).toUpperCase()
-);
+  str.slice(1, str.length - 1) +
+  str.slice(str.length - 1).toUpperCase(); // Some test strinG
 
-var str = "some test string";
-alert(str.indexOf(" ")); // перший пробіл - 4
-alert(str.indexOf(" ", "5")); // другий пробіл, відраховуючи від 5 символу - 9
+str = str.slice(0, str.length - 6); // 'Some test '
 
-var str = "some test string";
-alert(str.slice(0, str.length - 6));
+str.indexOf(" ", str.indexOf(" ") + 1); // this solution doesn't work if we want to find position of 3rd " "
+
+/* function getPosition(string, subString, index) {
+  return string.split(subString, index).join(subString).length;
+}
+getPosition(str, " ", 2); // SOLUTION #2 I've found in the internet */
 
 //CHALLENGE
 
-var entranceNumber = prompt("Enter the apartment number");
-if (entranceNumber >= 1 && entranceNumber <= 20) {
-  alert("You choosed entrance № 1");
+function getNumber(apartmentNumber) {
+  if (
+    Number.isInteger(apartmentNumber) &&
+    apartmentNumber >= 1 &&
+    apartmentNumber <= 60
+  ) {
+    if (apartmentNumber >= 1 && apartmentNumber <= 20) {
+      return "You choosed entrance № 1";
+    }
+    if (apartmentNumber >= 21 && apartmentNumber <= 40) {
+      return "You choosed entrance № 2";
+    }
+    if (apartmentNumber >= 41 && apartmentNumber <= 60) {
+      return "You choosed entrance № 3";
+    }
+  } else {
+    return "Enter correct number from 1 to 60";
+  }
 }
-if (entranceNumber >= 21 && entranceNumber <= 40) {
-  alert("You choosed entrance № 2");
-}
-if (entranceNumber >= 41 && entranceNumber <= 60) {
-  alert("You choosed entrance № 3");
-}
-if (entranceNumber >= 61) {
-  alert("You selected the wrong apartment number");
-}
+
+let apartmentNumber = +prompt("Enter the apartment number");
+getNumber(apartmentNumber);
